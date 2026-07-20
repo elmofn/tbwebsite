@@ -1470,7 +1470,7 @@
     </div>
 
     <div class="tagline-strip">
-      <div>Get <span class="mint">BACK</span>. Travel. <em class="italic-serif">Repeat.</em></div>
+      <div data-i18n="slogan.strip">Get <span class="mint">BACK</span>. Travel. <em class="italic-serif">Repeat.</em></div>
     </div>
   </div>
 </header>
@@ -1523,7 +1523,7 @@
     </div>
 
     <div class="manifesto-grid">
-      <h2 class="manifesto-title reveal">
+      <h2 class="manifesto-title reveal" data-i18n="slogan.manifesto">
         Get <span class="mint">BACK.</span><br>
         Travel.<br>
         <span class="ghost">Repeat.</span>
@@ -1896,7 +1896,7 @@
       </div>
 
       <div class="cta-right reveal reveal-d2">
-        <div class="cta-tagline">Get <span class="mint">BACK.</span><br>Travel.<br><em>Repeat.</em></div>
+        <div class="cta-tagline" data-i18n="slogan.cta">Get <span class="mint">BACK.</span><br>Travel.<br><em>Repeat.</em></div>
 
         <div class="contact-card">
           <div class="contact-head">
@@ -1960,7 +1960,7 @@
         <p class="footer-statement" data-i18n="foot.statement">
           A global travel credits platform for brands that turn <em>consumption</em> into a relationship of value.
         </p>
-        <div class="footer-tagline">
+        <div class="footer-tagline" data-i18n="slogan.footer">
           Get <span class="mint">BACK.</span> Travel. <em>Repeat.</em>
         </div>
       </div>
@@ -2112,6 +2112,8 @@
     const en = {};
     nodes.forEach(n => { en[n.getAttribute('data-i18n')] = n.innerHTML; });
     translations.en = en;
+    Object.assign(translations.pt, {"slogan.strip": "Get <span class=\"mint\">BACK</span>. Viaje. <em class=\"italic-serif\">Repita.</em>", "slogan.manifesto": "Get <span class=\"mint\">BACK.</span><br>Viaje.<br><span class=\"ghost\">Repita.</span>", "slogan.cta": "Get <span class=\"mint\">BACK.</span><br>Viaje.<br><em>Repita.</em>", "slogan.footer": "Get <span class=\"mint\">BACK.</span> Viaje. <em>Repita.</em>"});
+    Object.assign(translations.es, {"slogan.strip": "Get <span class=\"mint\">BACK</span>. Viaja. <em class=\"italic-serif\">Repite.</em>", "slogan.manifesto": "Get <span class=\"mint\">BACK.</span><br>Viaja.<br><span class=\"ghost\">Repite.</span>", "slogan.cta": "Get <span class=\"mint\">BACK.</span><br>Viaja.<br><em>Repite.</em>", "slogan.footer": "Get <span class=\"mint\">BACK.</span> Viaja. <em>Repite.</em>"});
 
     const htmlLang = { en: 'en', pt: 'pt-BR', es: 'es' };
     const switchEl = document.querySelector('.lang-switch');
