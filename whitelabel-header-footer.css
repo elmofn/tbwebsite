@@ -1,0 +1,192 @@
+/* ============================================================================
+   TravelBACK — Camada de estilo (CSS "de enxerto") para o marketplace whitelabel
+   ----------------------------------------------------------------------------
+   Objetivo: deixar o CABEÇALHO (.topnav) e o RODAPÉ (<footer>) do marketplace
+   whitelabel com o mesmo vocabulário visual do site da TravelBACK
+   (cores, tipografia, pílulas, glass creme no topo e rodapé violeta escuro
+   com detalhes em menta).
+
+   Como usar:
+   - Injetar/carregar este arquivo DEPOIS do CSS do whitelabel.
+   - Os overrides usam !important porque o cabeçalho e o rodapé do marketplace
+     são estilizados por style inline (que tem prioridade sobre CSS externo).
+   - Tudo está escopado em .topnav e footer, então NÃO afeta o corpo da página.
+   - Requer a fonte 'Inter' (o marketplace já a carrega). Caso não esteja
+     disponível, mantém o fallback do sistema.
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   1. Paleta e tokens TravelBACK
+   ---------------------------------------------------------------------------- */
+:root{
+  --tb-violet-900:#1a0f4a;
+  --tb-violet-800:#241569;
+  --tb-violet-700:#3a1fb8;
+  --tb-violet-600:#5b3fe4;
+  --tb-violet-500:#7c5cff;
+  --tb-violet-100:#e8e1ff;
+  --tb-mint:#7ff5c5;
+  --tb-mint-dark:#4fd9a3;
+  --tb-cream:#f2efe9;
+  --tb-ink:#0c0a2b;
+  --tb-gray-500:#6b6b85;
+
+  /* superfícies translúcidas reutilizadas */
+  --tb-glass-cream:rgba(242,239,233,0.85);
+  --tb-hairline:rgba(12,10,43,0.06);
+  --tb-ink-tint:rgba(91,63,228,0.08);
+}
+
+/* ============================================================================
+   2. CABEÇALHO  (.topnav)
+   Referência TravelBACK: barra fixa em creme translúcido, blur 16px, hairline
+   sutil; links em "ink" com hover violeta e ativo em pílula escura; CTA "ink"
+   em pílula que vira violeta no hover.
+   ============================================================================ */
+
+/* Barra do topo — glass creme */
+.topnav{
+  background:var(--tb-glass-cream) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  backdrop-filter:blur(16px) !important;
+  border-bottom:1px solid var(--tb-hairline) !important;
+  box-shadow:none !important;
+}
+.topnav .topnav-inner{
+  font-family:'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* A "pílula glass" que envolve os links deixa de existir visualmente:
+   na TravelBACK os links ficam soltos sobre a barra. */
+.topnav .liquid-glass{
+  background:transparent !important;
+  border:none !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  padding:0 !important;
+}
+
+/* Links de navegação */
+.topnav .navlink{
+  color:var(--tb-ink) !important;
+  font-family:'Inter', system-ui, sans-serif !important;
+  font-size:12.5px !important;
+  font-weight:500 !important;
+  padding:6px 10px !important;
+  border-radius:8px !important;
+  transition:background .2s, color .2s !important;
+}
+.topnav .navlink:hover{
+  background:var(--tb-ink-tint) !important;
+  color:var(--tb-violet-700) !important;
+}
+.topnav .navlink.active{
+  background:var(--tb-ink) !important;
+  color:var(--tb-cream) !important;
+}
+
+/* Seletor de idioma (botão "PT") — pílula clara discreta */
+.topnav button[aria-label="Idioma"]{
+  background:rgba(12,10,43,0.04) !important;
+  border:1px solid rgba(12,10,43,0.08) !important;
+  color:var(--tb-ink) !important;
+  border-radius:999px !important;
+}
+.topnav button[aria-label="Idioma"]:hover{
+  background:var(--tb-ink-tint) !important;
+  color:var(--tb-violet-700) !important;
+}
+
+/* CTA "Entrar" — pílula ink → violeta no hover (igual .nav-cta da TravelBACK) */
+.topnav .btn-primary,
+.topnav .signin-btn{
+  background:var(--tb-ink) !important;
+  color:var(--tb-cream) !important;
+  border:none !important;
+  border-radius:100px !important;
+  font-family:'Inter', system-ui, sans-serif !important;
+  font-weight:500 !important;
+  box-shadow:none !important;
+  transition:transform .2s, background .2s !important;
+}
+.topnav .btn-primary:hover,
+.topnav .signin-btn:hover{
+  background:var(--tb-violet-600) !important;
+  color:var(--tb-cream) !important;
+  transform:translateY(-1px) !important;
+}
+.topnav .signin-btn .signin-icon{ color:var(--tb-cream) !important; }
+
+/* Botão "hambúrguer" (mobile) */
+.topnav .nav-burger{
+  color:var(--tb-ink) !important;
+  background:transparent !important;
+  border:1px solid rgba(12,10,43,0.08) !important;
+  border-radius:10px !important;
+}
+.topnav .nav-burger:hover{
+  background:var(--tb-ink-tint) !important;
+  color:var(--tb-violet-700) !important;
+}
+
+/* ============================================================================
+   3. RODAPÉ  (<footer>)
+   Referência TravelBACK: fundo violeta escuro em gradiente com brilhos, texto
+   creme, títulos de coluna em menta com "bolinha", links que acendem em menta.
+   ============================================================================ */
+
+footer{
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(124,92,255,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 15% 80%, rgba(91,63,228,0.15) 0%, transparent 45%),
+    linear-gradient(180deg, var(--tb-violet-900) 0%, var(--tb-ink) 100%) !important;
+  border-top:none !important;
+  color:var(--tb-cream) !important;
+  font-family:'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Títulos das colunas — menta, tracking largo, com bolinha antes */
+footer h3{
+  color:var(--tb-mint) !important;
+  font-size:11px !important;
+  font-weight:600 !important;
+  letter-spacing:0.2em !important;
+  text-transform:uppercase !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+}
+footer h3::before{
+  content:'' !important;
+  width:6px !important;
+  height:6px !important;
+  border-radius:50% !important;
+  background:var(--tb-mint) !important;
+  flex-shrink:0 !important;
+}
+
+/* Textos e itens de lista sobre o fundo escuro */
+footer p,
+footer li,
+footer ul li{
+  color:rgba(255,255,255,0.7) !important;
+}
+
+/* Links do rodapé — acendem em menta no hover */
+footer a{
+  color:rgba(255,255,255,0.7) !important;
+  text-decoration:none !important;
+  transition:color .2s !important;
+}
+footer a:hover{
+  color:var(--tb-mint) !important;
+}
+
+/* Divisória interna + barra de copyright (o bloco com text-align:center) */
+footer div[style*="border-top"]{
+  border-top-color:rgba(255,255,255,0.08) !important;
+}
+footer div[style*="text-align:center"] p{
+  color:rgba(255,255,255,0.5) !important;
+}
